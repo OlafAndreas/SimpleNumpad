@@ -10,6 +10,9 @@
 		ED0939F91D06FE77001A1553 /* SimpleNumpad.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0939F81D06FE77001A1553 /* SimpleNumpad.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED093A001D06FE77001A1553 /* SimpleNumpad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0939F51D06FE77001A1553 /* SimpleNumpad.framework */; };
 		ED093A051D06FE77001A1553 /* SimpleNumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED093A041D06FE77001A1553 /* SimpleNumpadTests.swift */; };
+		ED093A121D06FEB6001A1553 /* NumberpadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED093A111D06FEB6001A1553 /* NumberpadViewController.swift */; };
+		ED093A141D06FF09001A1553 /* CustomPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED093A131D06FF09001A1553 /* CustomPopoverViewController.swift */; };
+		ED093A161D06FF31001A1553 /* SimpleNumpad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED093A151D06FF31001A1553 /* SimpleNumpad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		ED0939FF1D06FE77001A1553 /* SimpleNumpadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleNumpadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED093A041D06FE77001A1553 /* SimpleNumpadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNumpadTests.swift; sourceTree = "<group>"; };
 		ED093A061D06FE77001A1553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED093A111D06FEB6001A1553 /* NumberpadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberpadViewController.swift; path = ../Classes/NumberpadViewController.swift; sourceTree = "<group>"; };
+		ED093A131D06FF09001A1553 /* CustomPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPopoverViewController.swift; path = ../Classes/CustomPopoverViewController.swift; sourceTree = "<group>"; };
+		ED093A151D06FF31001A1553 /* SimpleNumpad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SimpleNumpad.storyboard; path = ../Assets/SimpleNumpad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,8 @@
 		ED0939F71D06FE77001A1553 /* SimpleNumpad */ = {
 			isa = PBXGroup;
 			children = (
+				ED093A101D06FE86001A1553 /* Classes */,
+				ED093A0F1D06FE7E001A1553 /* Assets */,
 				ED0939F81D06FE77001A1553 /* SimpleNumpad.h */,
 				ED0939FA1D06FE77001A1553 /* Info.plist */,
 			);
@@ -84,6 +92,23 @@
 				ED093A061D06FE77001A1553 /* Info.plist */,
 			);
 			path = SimpleNumpadTests;
+			sourceTree = "<group>";
+		};
+		ED093A0F1D06FE7E001A1553 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				ED093A151D06FF31001A1553 /* SimpleNumpad.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		ED093A101D06FE86001A1553 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ED093A111D06FEB6001A1553 /* NumberpadViewController.swift */,
+				ED093A131D06FF09001A1553 /* CustomPopoverViewController.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED093A161D06FF31001A1553 /* SimpleNumpad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +220,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED093A121D06FEB6001A1553 /* NumberpadViewController.swift in Sources */,
+				ED093A141D06FF09001A1553 /* CustomPopoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +338,7 @@
 		ED093A0A1D06FE77001A1553 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +349,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vss.SimpleNumpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		ED093A0B1D06FE77001A1553 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
