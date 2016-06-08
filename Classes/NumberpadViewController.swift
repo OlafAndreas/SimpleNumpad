@@ -22,7 +22,6 @@ public class NumberPadViewController : UIViewController {
         
         didSet {
             
-            print(value)
             self.onValueChanged?(value)
         }
     }
