@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NumberPadViewController : UIViewController {
+public class NumberPadViewController : UIViewController {
     
     @IBOutlet var numberPadView: UIInputView!
     
@@ -47,7 +47,7 @@ class NumberPadViewController : UIViewController {
         NumberPadViewController.numpadPopover?.dismissPopover()
     }
     
-    class func display(onViewController: UIViewController, fromView: UIView, value: Int, onValueChanged: (String) -> (), passthroughViews: [UIView]?) {
+    public class func display(onViewController: UIViewController, fromView: UIView, value: Int, onValueChanged: (String) -> (), passthroughViews: [UIView]?) {
         
         if let popover = numpadPopover {
             
