@@ -22,7 +22,7 @@ func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
 
 ### Install using CocoaPods
 ```ruby
-source 'git@github.com:OlafAndreas/SimpleNumpad.git'
+source 'https@github.com/OlafAndreas/SimpleNumpad'
 
 platform :ios, '9.0'
 use_frameworks!
