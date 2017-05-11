@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SimpleNumpad"
-  s.version      = "0.0.2"
+  s.version      = "1.0.0"
   s.summary      = "A simple numpad displaying 0-9 buttons. Easy to use."
 
   # This description is used to generate tags and improve search results.

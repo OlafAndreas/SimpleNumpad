@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class NumberPadViewController : UIViewController {
+open class NumberPadViewController : UIViewController {
     
     @IBOutlet var numberPadView: UIInputView!
     
@@ -26,27 +26,27 @@ public class NumberPadViewController : UIViewController {
         }
     }
     
-    @IBAction func numberPressed(sender: UIButton) {
+    @IBAction func numberPressed(_ sender: UIButton) {
         
-        value = value.stringByAppendingString("\(sender.tag)")
+        value = value + "\(sender.tag)"
     }
     
-    @IBAction func backspace(sender: AnyObject) {
+    @IBAction func backspace(_ sender: AnyObject) {
         
         if value.isEmpty {
             
             return
         }
         
-        value = value.substringToIndex(value.endIndex.predecessor())
+        value = value.substring(to: value.characters.index(before: value.endIndex))
     }
     
-    @IBAction func done(sender: AnyObject) {
+    @IBAction func done(_ sender: AnyObject) {
         
         NumberPadViewController.numpadPopover?.dismissPopover()
     }
     
-    public class func display(onViewController: UIViewController, fromView: UIView, value: Int, onValueChanged: (String) -> (), passthroughViews: [UIView]?) {
+    open class func display(_ onViewController: UIViewController, fromView: UIView, value: Int, onValueChanged: @escaping (String) -> (), passthroughViews: [UIView]?) {
         
         if let popover = numpadPopover {
             
@@ -62,9 +62,9 @@ public class NumberPadViewController : UIViewController {
             return
         }
         
-        let storyboard = UIStoryboard(name: "SimpleNumpad", bundle: NSBundle(forClass: NumberPadViewController.self))
+        let storyboard = UIStoryboard(name: "SimpleNumpad", bundle: Bundle(for: NumberPadViewController.self))
         
-        let numpadViewController = storyboard.instantiateViewControllerWithIdentifier("NumberPad") as! NumberPadViewController
+        let numpadViewController = storyboard.instantiateViewController(withIdentifier: "NumberPad") as! NumberPadViewController
         
         numpadViewController.value = value == 0 ? "" : "\(value)"
         
@@ -72,7 +72,7 @@ public class NumberPadViewController : UIViewController {
         
         numpadPopover = CustomPopoverViewController(presentingViewController: onViewController, contentViewController: numpadViewController)
         
-        numpadPopover?.presentPopover(sourceView: fromView.superview!, sourceRect: fromView.frame, permittedArrowDirections: .Down, passThroughViews: passthroughViews)
+        numpadPopover?.presentPopover(sourceView: fromView.superview!, sourceRect: fromView.frame, permittedArrowDirections: .down, passThroughViews: passthroughViews)
         
         numpadPopover?.onPopoverDismissed = {
             

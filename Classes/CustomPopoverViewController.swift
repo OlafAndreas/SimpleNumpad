@@ -8,18 +8,18 @@
 
 import UIKit
 
-public class CustomPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+open class CustomPopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    private var viewControllerContext: UIViewController!
-    private var contentViewController: UIViewController?
-    public var onPopoverDismissed: (() -> ())?
+    fileprivate var viewControllerContext: UIViewController!
+    fileprivate var contentViewController: UIViewController?
+    open var onPopoverDismissed: (() -> ())?
     
     /***
      Returns true/false depending on if the popover is visible or not.
      - Returns: Bool
      */
-    public var isVisible: Bool {
-        return self.isViewLoaded() && self.view.window != nil
+    open var isVisible: Bool {
+        return self.isViewLoaded && self.view.window != nil
     }
     
     /***
@@ -40,10 +40,10 @@ public class CustomPopoverViewController: UIViewController, UIPopoverPresentatio
         }
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
-        self.modalPresentationStyle = .Popover
+        self.modalPresentationStyle = .popover
     }
     
     /// Use this to reset the popover controller settings to default.
@@ -52,16 +52,16 @@ public class CustomPopoverViewController: UIViewController, UIPopoverPresentatio
             return
         }
         
-        controller.permittedArrowDirections = .Any
+        controller.permittedArrowDirections = .any
         controller.passthroughViews = nil
-        controller.sourceRect = CGRectZero
+        controller.sourceRect = CGRect.zero
         controller.sourceView = nil
         removeContentViewController()
     }
     
-    private func removeContentViewController(){
+    fileprivate func removeContentViewController(){
         if let content = self.contentViewController {
-            content.dismissViewControllerAnimated(true, completion: {
+            content.dismiss(animated: true, completion: {
                 content.removeFromParentViewController()
                 self.contentViewController = nil
             })
@@ -78,7 +78,7 @@ public class CustomPopoverViewController: UIViewController, UIPopoverPresentatio
      - Parameter permittedArrowDirections: Defines the permitted arrow directions. Defaults to .Any.
      - Parameter passThroughViews: An UIView array which contains UIView's that should be interactable during popover presentation. Optional.
      */
-    public func presentPopover(popoverContentView: UIView? = nil, sourceView: UIView? = nil, sourceRect: CGRect, permittedArrowDirections: UIPopoverArrowDirection = .Any, passThroughViews: [UIView]? = nil){
+    open func presentPopover(_ popoverContentView: UIView? = nil, sourceView: UIView? = nil, sourceRect: CGRect, permittedArrowDirections: UIPopoverArrowDirection = .any, passThroughViews: [UIView]? = nil){
         
         if let content = popoverContentView {
             self.view.addSubview(content)
@@ -93,7 +93,7 @@ public class CustomPopoverViewController: UIViewController, UIPopoverPresentatio
             return
         }
         
-        self.viewControllerContext.presentViewController(self, animated: true, completion: nil)
+        self.viewControllerContext.present(self, animated: true, completion: nil)
         
         let controller = self.popoverPresentationController!
         
@@ -109,31 +109,31 @@ public class CustomPopoverViewController: UIViewController, UIPopoverPresentatio
      
      - Parameter animated: Determine whether the dismissal should be animated or not not. Defaults to true.
      */
-    public func dismissPopover(animated: Bool = true){
-        self.dismissViewControllerAnimated(animated, completion: {
+    open func dismissPopover(_ animated: Bool = true){
+        self.dismiss(animated: animated, completion: {
             self.onPopoverDismissed?()
             self.removeContentViewController()
         })
     }
     
-    public func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
+    open func popoverPresentationController(_ popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverTo rect: UnsafeMutablePointer<CGRect>, in view: AutoreleasingUnsafeMutablePointer<UIView>) {
         
     }
     
-    public func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+    open func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         self.onPopoverDismissed?()
         self.removeContentViewController()
     }
     
-    public func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
+    open func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
         return true
     }
     
-    public func prepareForPopoverPresentation(popoverPresentationController: UIPopoverPresentationController) {
+    open func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
         
     }
     
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.view.superview?.layer.cornerRadius = 0
