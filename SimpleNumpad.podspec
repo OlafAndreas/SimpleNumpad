@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SimpleNumpad"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A simple numpad displaying 0-9 buttons. Easy to use."
 
   # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   A simple numpad made to be used on iPad. The most important thing is that it's easy to implement in existing code.
                    DESC
 
-  s.homepage     = "https://github.com/OlafAndreas/SimpleNumpad"
+  s.homepage     = "https://github.com/HuconGlobal/SimpleNumpad"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/OlafAndreas/SimpleNumpad.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/HuconGlobal/SimpleNumpad.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
