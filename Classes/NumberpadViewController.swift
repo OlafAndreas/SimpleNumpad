@@ -38,7 +38,9 @@ open class NumberPadViewController : UIViewController {
             return
         }
         
-        value = String(value[..<value.endIndex])
+        let index = value.index(before: value.endIndex)
+        
+        value = String(value[..<index])
     }
     
     @IBAction func done(_ sender: AnyObject) {
